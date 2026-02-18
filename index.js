@@ -1,9 +1,28 @@
 const http = require("node:http");
+const fs = require("node:fs");
+const path = require("node:path");
+
+// mapping URLs to files
+const routes = {
+  "/": "index.html",
+  "/about": "about.html",
+  "/contact-me": "contact-me.html",
+};
 
 const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader("Content-Type", "text/plain");
-  res.end("Server is running");
+  // picking the file based on the url
+  const fileName = routes[req.url] || "404.html";
+  const filePath = path.join(__dirname, fileName);
+
+  // setting 404 status code
+  if (!routes[req.url]) {
+    res.statusCode = 404;
+  }
+
+  fs.readFile(filePath, (err, data) => {
+    res.setHeader("Content-Type", "text/html");
+    res.end(data);
+  });
 });
 
 server.listen(8080, () =>
