@@ -1,7 +1,26 @@
-const http = require("node:http");
-const fs = require("node:fs");
+/*const http = require("node:http");
+const fs = require("node:fs");*/
 const path = require("node:path");
+const express = require("express");
+const app = express();
 
+app.get("/", (req, res) => res.sendFile(path.join(__dirname, "index.html")));
+app.get("/about", (req, res) =>
+  res.sendFile(path.join(__dirname, "about.html")),
+);
+app.get("/contact-me", (req, res) =>
+  res.sendFile(path.join(__dirname, "contact-me.html")),
+);
+
+const PORT = 3000;
+app.listen(PORT, (error) => {
+  if (error) {
+    throw error;
+  }
+  console.log(`My first Express app - listening on port ${PORT}!`);
+});
+
+/*
 // mapping URLs to files
 const routes = {
   "/": "index.html",
@@ -32,4 +51,4 @@ const server = http.createServer((req, res) => {
 
 server.listen(8080, () =>
   console.log("Server is running at http://localhost:8080"),
-);
+);*/
