@@ -1,0 +1,23 @@
+{
+  "name": "first-project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AminaAssouane/node-first-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AminaAssouane/node-first-project/issues"
+  },
+  "homepage": "https://github.com/AminaAssouane/node-first-project#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
